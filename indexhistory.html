@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petualangan Sejarah Git & Linux!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Palet Warna Ramah Anak: */
+        /* Biru Langit: #87CEEB */
+        /* Hijau Daun: #90EE90 */
+        /* Kuning Ceria: #FFD700 */
+        /* Merah Muda Permen: #FFB6C1 */
+        /* Ungu Fantasi: #BA55D3 */
+        /* Abu-abu Netral: #F0F0F0 */
+        /* Teks Gelap: #333333 */
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(to bottom right, #87CEEB, #90EE90); /* Gradien biru-hijau ceria */
+            color: #333333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+       .container {
+            background-color: rgba(255, 255, 255, 0.95); /* Latar belakang putih transparan */
+            border-radius: 25px; /* Sudut lebih membulat */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Bayangan lebih kuat */
+            padding: 30px 40px;
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Fredoka One', cursive; /* Font yang menyenangkan */
+            color: #BA55D3; /* Ungu Fantasi */
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px #FFD700; /* Bayangan kuning ceria */
+        }
+
+       .intro-text {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #555555;
+        }
+
+       .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px; /* Jarak antar tombol */
+            margin-bottom: 40px;
+            flex-wrap: wrap; /* Agar responsif di layar kecil */
+        }
+
+       .action-button {
+            background-color: #FFD700; /* Kuning Ceria */
+            color: #333333;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px; /* Tombol bulat */
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+       .action-button:hover {
+            background-color: #FFB6C1; /* Merah Muda Permen saat hover */
+            transform: translateY(-5px) scale(1.05); /* Efek melayang dan membesar */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+       .action-button:active {
+            transform: translateY(0) scale(0.98); /* Efek ditekan */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+       .button-icon {
+            width: 35px; /* Ukuran ikon */
+            height: 35px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* Ikon untuk tombol */
+        #gitButton.button-icon {
+            background-image: url('https://img.icons8.com/ios-filled/50/000000/git.png'); /* Ikon Git */
+        }
+        #linuxButton.button-icon {
+            background-image: url('https://img.icons8.com/ios-filled/50/000000/linux.png'); /* Ikon Linux */
+        }
+
+       .history-section {
+            background-color: #F0F0F0; /* Abu-abu Netral untuk latar belakang konten */
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            text-align: left;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Bayangan dalam */
+            display: none; /* Sembunyikan secara default */
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+       .history-section h2 {
+            font-family: 'Fredoka One', cursive;
+            color: #2c3e50; /* Biru gelap */
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #90EE90; /* Garis bawah hijau */
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+       .history-section p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #444444;
+        }
+
+       .history-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+       .history-section ul li {
+            background-color: #ffffff;
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+       .history-section ul li::before {
+            content: '✨'; /* Ikon bintang lucu */
+            font-size: 1.2em;
+            margin-right: 5px;
+            color: #FFD700; /* Kuning ceria */
+        }
+
+        /* Styling untuk gambar di dalam konten */
+       .history-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsif untuk layar kecil */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+           .action-button {
+                font-size: 1.2em;
+                padding: 12px 25px;
+            }
+           .history-section h2 {
+                font-size: 1.8em;
+            }
+           .history-section {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+           .action-button {
+                width: 100%; /* Tombol penuh lebar di layar sangat kecil */
+                justify-content: center;
+            }
+           .button-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Selamat Datang di Dunia Teknologi!</h1>
+        <p class="intro-text">Ayo kita jelajahi kisah seru di balik alat-alat keren yang membantu para programmer!</p>
+
+        <div class="button-container">
+            <button class="action-button" id="gitButton">
+                <span class="button-icon"></span> Sejarah Git
+            </button>
+            <button class="action-button" id="linuxButton">
+                <span class="button-icon"></span> Sejarah Linux
+            </button>
+        </div>
+
+        <div id="gitHistory" class="history-section">
+            <h2>Kisah Seru Git: Sang Penjaga Perubahan!</h2>
+            <p>Bayangkan kamu sedang membuat sebuah gambar bersama teman-teman. Setiap kali ada yang mengubah sesuatu, kamu ingin menyimpan versi lamanya juga, supaya kalau ada kesalahan, kamu bisa kembali ke versi yang bagus. Nah, Git itu seperti buku ajaib yang mencatat setiap perubahan yang kamu dan teman-temanmu buat pada sebuah proyek!</p>
+            <p>Git diciptakan oleh seorang jenius bernama **Linus Torvalds** pada tahun **2005**. Linus adalah orang yang sama yang menciptakan Linux! Dia membuat Git karena dia butuh cara yang sangat cepat dan efisien untuk mengelola semua perubahan kode yang dibuat oleh ribuan programmer di seluruh dunia untuk proyek Linux.</p>
+            <p>Dengan Git, setiap orang bisa bekerja di bagian mereka sendiri tanpa takut merusak pekerjaan orang lain. Kalau ada yang salah, Git bisa membantu kita melihat siapa yang mengubah apa, dan bahkan kembali ke versi sebelumnya dengan mudah. Keren, kan?</p>
+            <ul>
+                <li>✨ **2005:** Linus Torvalds menciptakan Git untuk mengelola kode Linux. [3]</li>
+                <li>✨ **Tujuan:** Membantu banyak orang bekerja sama di satu proyek tanpa bingung. [3]</li>
+                <li>✨ **Cara Kerja:** Mencatat setiap "versi" atau "snapshot" dari proyekmu. [3]</li>
+            </ul>
+            <img src="https://via.placeholder.com/400x200/FFB6C1/333333?text=Git+Timeline+Fun" alt="Timeline Git">
+        </div>
+
+        <div id="linuxHistory" class="history-section">
+            <h2>Kisah Ajaib Linux: Sistem Operasi Gratis untuk Semua!</h2>
+            <p>Pernah dengar tentang Windows atau macOS? Nah, Linux itu juga sistem operasi, seperti otak komputer yang membuat semuanya bekerja. Tapi yang paling keren, Linux itu **gratis** dan bisa dipakai oleh siapa saja di seluruh dunia!</p>
+            <p>Kisah Linux dimulai pada tahun **1991** oleh seorang mahasiswa Finlandia bernama **Linus Torvalds** (ya, Linus yang sama dengan Git!). [4] Dia ingin membuat sistem operasi yang bisa diubah dan dibagikan secara bebas oleh siapa saja. [5]</p>
+            <p>Awalnya, Linux hanyalah "kernel" (inti) dari sistem operasi. Tapi kemudian, banyak programmer lain dari seluruh dunia ikut membantu mengembangkan bagian-bagian lain, sehingga Linux tumbuh menjadi sistem operasi yang lengkap dan sangat kuat. Sekarang, Linux ada di mana-mana: di ponsel pintar (seperti Android!), di server internet, di superkomputer, bahkan di beberapa mobil pintar!</p>
+            <ul>
+                <li>✨ **1991:** Linus Torvalds mengumumkan proyek kernel Linux. [4]</li>
+                <li>✨ **Tujuan:** Membuat sistem operasi gratis dan terbuka. [4, 5]</li>
+                <li>✨ **Pertumbuhan:** Ribuan programmer dari seluruh dunia ikut membantu. [4]</li>
+                <li>✨ **Di Mana-mana:** Ada di ponsel (Android), server, superkomputer, dan banyak lagi! [4]</li>
+            </ul>
+            <img src="https://via.placeholder.com/400x200/90EE90/333333?text=Linux+Penguin+Party" alt="Linux Penguin">
+        </div>
+    </div>
+
+    <script>
+        // Ambil elemen tombol dan bagian sejarah
+        const gitButton = document.getElementById('gitButton');
+        const linuxButton = document.getElementById('linuxButton');
+        const gitHistory = document.getElementById('gitHistory');
+        const linuxHistory = document.getElementById('linuxHistory');
+
+        // Fungsi untuk menyembunyikan semua bagian sejarah
+        function hideAllHistorySections() {
+            gitHistory.style.display = 'none';
+            linuxHistory.style.display = 'none';
+        }
+
+        // Event listener untuk tombol Git
+        gitButton.addEventListener('click', () => {
+            hideAllHistorySections(); // Sembunyikan yang lain
+            gitHistory.style.display = 'block'; // Tampilkan sejarah Git
+        });
+
+        // Event listener untuk tombol Linux
+        linuxButton.addEventListener('click', () => {
+            hideAllHistorySections(); // Sembunyikan yang lain
+            linuxHistory.style.display = 'block'; // Tampilkan sejarah Linux
+        });
+
+        // Sembunyikan semua bagian sejarah saat halaman pertama kali dimuat
+        document.addEventListener('DOMContentLoaded', hideAllHistorySections);
+    </script>
+
+</body>
+</html>
