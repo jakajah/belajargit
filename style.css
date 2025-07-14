@@ -149,6 +149,7 @@ code {
 .choice-item:nth-child(2) { animation-delay: 0.2s; }
 .choice-item:nth-child(3) { animation-delay: 0.3s; }
 .choice-item:nth-child(4) { animation-delay: 0.4s; }
+.choice-item:nth-child(5) { animation-delay: 0.5s; } /* Penambahan untuk item ke-5 */
 
 
 /* Bagian Bawah Kartu (Footer) & Tombol Logout */

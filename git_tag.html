@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penjelasan Git Tag</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card content-card">
+        <a href="pilihan.html" class="back-link">← Kembali ke Pilihan</a>
+        <h1>🏷️ Git Tag</h1>
+        <p>
+            <strong>Git Tag</strong> adalah penanda yang digunakan untuk menandai sebuah commit spesifik dalam riwayat proyek. Ini sangat berguna untuk menandai poin-poin penting, seperti rilis versi (contoh: <code>v1.0</code>, <code>v2.0.1</code>).
+        </p>
+        <p>
+            Ada dua jenis tag utama: <strong>annotated</strong> (disarankan) dan <strong>lightweight</strong>.
+        </p>
+        <hr>
+        
+        <h2>Cara Menggunakan Git Tag</h2>
+
+        <h3>Membuat Annotated Tag (Disarankan)</h3>
+        <p>Jenis ini menyimpan informasi tambahan seperti nama penanda, email, tanggal, dan pesan. Ini adalah praktik terbaik untuk rilis resmi.</p>
+        <code>git tag -a v1.0 -m "Pesan rilis, contoh: Versi 1.0 stabil"</code>
+
+        <h3>Membuat Lightweight Tag</h3>
+        <p>Jenis ini hanyalah sebuah penunjuk ke sebuah commit, tanpa informasi tambahan. Cocok untuk penanda pribadi atau sementara.</p>
+        <code>git tag v1.0-beta</code>
+
+        <h3>Melihat Semua Tag</h3>
+        <p>Untuk menampilkan daftar semua tag yang ada di repositori lokal.</p>
+        <code>git tag</code>
+        
+        <h3>Melihat Detail Tag</h3>
+        <p>Menampilkan informasi lengkap dari sebuah annotated tag, termasuk pembuat dan pesannya.</p>
+        <code>git show v1.0</code>
+
+        <h3>Mendorong (Push) Tag ke Remote</h3>
+        <p>Secara default, `git push` tidak mengirim tag. Anda harus mendorongnya secara eksplisit.</p>
+        <code># Mendorong satu tag spesifik
+git push origin v1.0
+
+# Mendorong semua tag yang ada di lokal
+git push origin --tags</code>
+
+        <h3>Menghapus Tag</h3>
+        <p>Menghapus tag dari repositori lokal dan remote jika diperlukan.</p>
+        <code># Menghapus tag lokal
+git tag -d v1.0
+
+# Menghapus tag di remote (setelah dihapus di lokal)
+git push origin --delete v1.0</code>
+    </div>
+</body>
+</html>
